@@ -8,6 +8,7 @@ import sys
 import numpy as np
 from ruamel.yaml import YAML
 from shutil import copy2
+from .utils import *
 
 def config_load(config):
     """Load configuration
