@@ -109,6 +109,9 @@ class Model:
             cmd.append('-DGOTM_USE_STIM='+str(use_stim).lower())
             cmd.append('-DGOTM_USE_NetCDF='+str(use_netcdf).lower())
             cmd.append('-DGOTM_EXTRA_OUTPUT='+str(extra_output).lower())
+            cmd.append('-DNetCDF_CONFIG_EXECUTABLE=/usr/local/anaconda3/bin')
+            cmd.append('-DNetCDF_INCLUDE_DIRS=/usr/local/anaconda3/include')
+            cmd.append('-DNetCDF_LIBRARIES=/usr/local/anaconda3/lib/libnetcdf.a')
             if debug:
                 cmd.append('-DCMAKE_BUILD_TYPE=Debug')
             print('Building GOTM...\n')
