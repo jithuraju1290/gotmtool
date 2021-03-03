@@ -112,6 +112,7 @@ class Model:
             cmd.append('-DNetCDF_CONFIG_EXECUTABLE=/usr/local/anaconda3/bin')
             cmd.append('-DNetCDF_INCLUDE_DIRS=/usr/local/anaconda3/include')
             cmd.append('-DNetCDF_LIBRARIES=/usr/local/anaconda3/lib/libnetcdf.a')
+            cmd.append('-DCMAKE_EXE_LINKER_FLAGS=-L/usr/local/anaconda3/lib -lnetcdf -lnetcdff')
             if debug:
                 cmd.append('-DCMAKE_BUILD_TYPE=Debug')
             print('Building GOTM...\n')
