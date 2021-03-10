@@ -121,7 +121,8 @@ class Model:
             proc = sp.run(cmd, cwd=self.environ['gotmdir_build'], check=True, stdout=sp.PIPE, text=True)
             print('\n'+proc.stdout+'\n')
             print('make install')
-            proc = sp.call(['make','install'], cwd=self.environ['gotmdir_build'])
+            proc = sp.run(['make','install'], cwd=self.environ['gotmdir_build'], check=True, stdout=sp.PIPE, text=True)
+            print('\n'+proc.stdout+'\n')
             print_ok('Done!')
         else:
             print_warning('GOTM is updated. Skipping the build step. Use \'clean=True\' to rebuild')
