@@ -101,8 +101,9 @@ class Model:
             cleanup_dir(self.environ['gotmdir_exe'])
         if not self._is_updated():
             # build the source code
-            cmd = ['cmake']
-            cmd.append(self.environ['gotmdir_code'])
+            cmd = ['/usr/local/anaconda3/bin/cmake']
+            cmd.append('-B'+self.environ['gotmdir_build'])
+            cmd.append('-S'+self.environ['gotmdir_code'])
             cmd.append('-DCMAKE_INSTALL_PREFIX:PATH='+self.environ['gotmdir_exe'])
             cmd.append('-DGOTM_USE_CVMIX='+str(use_cvmix).lower())
             cmd.append('-DGOTM_USE_FABM='+str(use_fabm).lower())
@@ -120,8 +121,7 @@ class Model:
             proc = sp.run(cmd, cwd=self.environ['gotmdir_build'], check=True, stdout=sp.PIPE, text=True)
             print('\n'+proc.stdout+'\n')
             print('make install')
-            proc = sp.run(['make','install'], cwd=self.environ['gotmdir_build'], check=True, stdout=sp.PIPE, text=True)
-            print('\n'+proc.stdout+'\n')
+            proc = sp.call(['make','install'], cwd=self.environ['gotmdir_build'])
             print_ok('Done!')
         else:
             print_warning('GOTM is updated. Skipping the build step. Use \'clean=True\' to rebuild')
