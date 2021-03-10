@@ -118,7 +118,7 @@ class Model:
                 cmd.append('-DCMAKE_BUILD_TYPE=Debug')
             print('Building GOTM...\n')
             print(' '.join(cmd))
-            proc = sp.run(cmd, cwd=self.environ['gotmdir_build'], check=True, stdout=sp.PIPE, text=True)
+            proc = sp.run(cmd, cwd=self.environ['gotmdir_code'], check=True, stdout=sp.PIPE, text=True)
             print('\n'+proc.stdout+'\n')
             print('make install')
             proc = sp.run(['make','install'], cwd=self.environ['gotmdir_build'], check=True, stdout=sp.PIPE, text=True)
